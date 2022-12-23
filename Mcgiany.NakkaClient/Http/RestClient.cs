@@ -1,5 +1,4 @@
-﻿using Mcgiany.NakkaClient.Serialization;
-using System.Text;
+﻿using System.Net.Http.Json;
 
 namespace Mcgiany.NakkaClient.Http;
 
@@ -24,18 +23,17 @@ public class RestClient : IDisposable
     /// <param name="request">Request data.</param>
     /// <returns>Response deserialized as TResponse.</returns>
     /// <exception cref="InvalidCastException">When deserialized object is null.</exception>
-    public async Task<TResponse> PostAsync<TRequest, TResponse>(string url, TRequest request)
+    public async Task<TResponse?> PostAsync<TRequest, TResponse>(string url, TRequest request)
     {
-        var serializedRequest = DefaultJsonSerializer.Serialize(request);
-        var message = new StringContent(serializedRequest, Encoding.UTF8, "application/json");
-        var response = await _httpClient.PostAsync(url, message);
-        var responseContent = await response.Content.ReadAsStringAsync();
-        var deserializedResponse = DefaultJsonSerializer.Deserialize<TResponse>(responseContent);
-        if (deserializedResponse == null)
+        try
         {
-            throw new InvalidCastException($"Cannot deserialize response from {url} to type {typeof(TResponse)}");
+            var response = await _httpClient.PostAsJsonAsync(url, request);
+            return await response.Content.ReadFromJsonAsync<TResponse>();
         }
-        return deserializedResponse;
+        catch (Exception e)
+        {
+            throw new InvalidCastException($"Cannot get response from {url} to type {typeof(TResponse)}", e);
+        }
     }
 
     /// <summary>
@@ -45,16 +43,16 @@ public class RestClient : IDisposable
     /// <param name="url">GET URL.</param>
     /// <returns>Response deserialized as TResponse.</returns>
     /// <exception cref="InvalidCastException">When deserialized object is null.</exception>
-    public async Task<TResponse> GetAsync<TResponse>(string url)
+    public async Task<TResponse?> GetAsync<TResponse>(string url)
     {
-        var response = await _httpClient.GetAsync(url);
-        var responseContent = await response.Content.ReadAsStringAsync();
-        var deserializedResponse = DefaultJsonSerializer.Deserialize<TResponse>(responseContent);
-        if (deserializedResponse == null)
+        try
         {
-            throw new InvalidCastException($"Cannot deserialize response from {url} to type {typeof(TResponse)}");
+            return await _httpClient.GetFromJsonAsync<TResponse>(url);
         }
-        return deserializedResponse;
+        catch (Exception e)
+        {
+            throw new InvalidCastException($"Cannot get response from {url} to type {typeof(TResponse)}", e);
+        }
     }
 
     public void Dispose()

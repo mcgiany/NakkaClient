@@ -27,7 +27,7 @@ public class NakkaTournament
     public long TournamentDate { get; set; }
 
     [JsonPropertyName("s_date")]
-    public long S_date { get; set; }
+    public long StartDate { get; set; }
 
     [JsonPropertyName("details")]
     public string Details { get; set; } = null!;
@@ -99,7 +99,7 @@ public class NakkaTournament
     public string[] TournamentTitle { get; set; } = null!;
 
     [JsonPropertyName("t_table")]
-    public string[][] TournamentTable { get; set; } = null!;
+    public object[] TournamentTable { get; set; } = null!;
 
     [JsonPropertyName("t_result")]
     public Dictionary<string, Dictionary<string, Dictionary<string, GameScore>>> TournamentResults { get; set; } = null!;

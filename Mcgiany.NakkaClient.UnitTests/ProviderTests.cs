@@ -19,14 +19,14 @@ public class ProviderTests
     {
         using var nakkaProvider = new ApiClient(NakkaUrl);
         var rounds = await nakkaProvider.GetSeasonListAsync("lg_4Hoz_9377", 0, 10, new[] { NakkaStatus.Completed });
-        Assert.Equal(10, rounds.Count);
+        Assert.Equal(10, rounds?.Count);
     }
 
     [Fact]
     public async Task GetTournamentTestAsync()
     {
         using var nakkaProvider = new ApiClient(NakkaUrl);
-        var tournament = await nakkaProvider.GetTournamentAsync("t_A8wg_4484");
+        var tournament = await nakkaProvider.GetTournamentAsync("t_Ytmw_7175");
         Assert.NotNull(tournament);
     }
 
@@ -35,7 +35,7 @@ public class ProviderTests
     {
         using var nakkaProvider = new ApiClient(NakkaUrl);
         var players = await nakkaProvider.GetTournamentPlayersAsync("t_A8wg_4484");
-        Assert.True(players.Any());
+        Assert.True(players?.Any());
     }
 
     [Fact]
@@ -43,7 +43,7 @@ public class ProviderTests
     {
         using var nakkaProvider = new ApiClient(NakkaUrl);
         var stats = await nakkaProvider.GetTournamentStatsAsync("t_A8wg_4484");
-        Assert.True(stats.Any());
+        Assert.True(stats?.Any());
     }
 
     [Fact]
@@ -51,7 +51,7 @@ public class ProviderTests
     {
         using var nakkaProvider = new ApiClient(NakkaUrl);
         var results = await nakkaProvider.GetTournamentResultsAsync("t_A8wg_4484");
-        Assert.Equal(30, results.List.Length);
+        Assert.Equal(30, results?.List.Length);
     }
 
     [Fact]

@@ -13,7 +13,7 @@ public interface INakkaClient
     /// </summary>
     /// <param name="leagueId">League ID.</param>
     /// <returns><see cref="NakkaLeague"/></returns>
-    Task<NakkaLeague> GetLeagueAsync(string leagueId);
+    Task<NakkaLeague?> GetLeagueAsync(string leagueId);
 
     /// <summary>
     /// Get season list - tournaments of the league.
@@ -25,28 +25,28 @@ public interface INakkaClient
     /// <param name="keyword">Filter keyword.</param>
     /// <param name="sort">Sort key.</param>
     /// <returns><see cref="NakkaRound"/></returns>
-    Task<List<NakkaRound>> GetSeasonListAsync(string leagueId, int skip, int count, NakkaStatus[] statuses, string keyword = "", string sort = "date");
+    Task<List<NakkaRound>?> GetSeasonListAsync(string leagueId, int skip, int count, NakkaStatus[] statuses, string keyword = "", string sort = "date");
 
     /// <summary>
     /// Get tournamen by ID.
     /// </summary>
     /// <param name="tournamentId">Tournament ID.</param>
     /// <returns><see cref="NakkaTournament"/></returns>
-    Task<NakkaTournament> GetTournamentAsync(string tournamentId);
+    Task<NakkaTournament?> GetTournamentAsync(string tournamentId);
 
     /// <summary>
     /// Get list of players in tournament.
     /// </summary>
     /// <param name="tournamentId">Tournament ID.</param>
     /// <returns><see cref="Player"/></returns>
-    Task<List<Player>> GetTournamentPlayersAsync(string tournamentId);
+    Task<List<Player>?> GetTournamentPlayersAsync(string tournamentId);
 
     /// <summary>
     /// Get tournament statistics.
     /// </summary>
     /// <param name="tournamentId">Tournament ID.</param>
     /// <returns>Dictionary of player tournament statistics where dictionary key is player ID.</returns>
-    Task<Dictionary<string, PlayerTournamentStats>> GetTournamentStatsAsync(string tournamentId);
+    Task<Dictionary<string, PlayerTournamentStats>?> GetTournamentStatsAsync(string tournamentId);
 
     /// <summary>
     /// Get tournamen results - list of tournament matches.
@@ -56,12 +56,12 @@ public interface INakkaClient
     /// <param name="count">Number of returned items.</param>
     /// <param name="name">Filter by name.</param>
     /// <returns><see cref="TournamentResults"/></returns>
-    Task<TournamentResults> GetTournamentResultsAsync(string tournamentId, int skip = 0, int count = 30, string name = "");
+    Task<TournamentResults?> GetTournamentResultsAsync(string tournamentId, int skip = 0, int count = 30, string name = "");
 
     /// <summary>
     /// Get match by ID.
     /// </summary>
     /// <param name="matchId">Match ID.</param>
     /// <returns><see cref="Match"/></returns>
-    Task<Match> GetMatchAsync(string matchId);
+    Task<Match?> GetMatchAsync(string matchId);
 }
