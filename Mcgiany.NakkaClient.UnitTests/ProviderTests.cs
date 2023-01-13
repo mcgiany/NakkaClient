@@ -1,4 +1,5 @@
 ﻿using Mcgiany.NakkaClient.Enums;
+using Mcgiany.NakkaClient.Extensions;
 using Xunit;
 
 namespace Mcgiany.NakkaClient.UnitTests;
@@ -26,7 +27,7 @@ public class ProviderTests
     public async Task GetTournamentTestAsync()
     {
         using var nakkaProvider = new ApiClient(NakkaUrl);
-        var tournament = await nakkaProvider.GetTournamentAsync("t_Ytmw_7175");
+        var tournament = await nakkaProvider.GetTournamentAsync("t_oEuf_6721");
         Assert.NotNull(tournament);
     }
 
