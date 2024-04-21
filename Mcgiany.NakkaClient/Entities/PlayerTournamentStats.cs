@@ -34,6 +34,9 @@ public class PlayerTournamentStats
     [JsonPropertyName("ton40")]
     public int Ton40Count { get; set; }
 
+    [JsonPropertyName("ton70")]
+    public int Ton70Count { get; set; }
+
     [JsonPropertyName("ton80")]
     public int Ton80Count { get; set; }
 
