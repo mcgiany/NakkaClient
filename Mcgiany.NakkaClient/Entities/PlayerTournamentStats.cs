@@ -40,6 +40,9 @@ public class PlayerTournamentStats
     [JsonPropertyName("highOut")]
     public int HighestCheckout { get; set; }
 
+    [JsonPropertyName("highOutCount")]
+    public int HighOutCount { get; set; }
+
     [JsonPropertyName("best")]
     public int BestLeg { get; set; }
 
