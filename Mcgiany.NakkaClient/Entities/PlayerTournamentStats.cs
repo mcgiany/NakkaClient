@@ -22,6 +22,12 @@ public class PlayerTournamentStats
     [JsonPropertyName("w_b")]
     public int W_b { get; set; }
 
+    [JsonPropertyName("winMatch")]
+    public int MatchWin { get; set; }
+
+    [JsonPropertyName("match")]
+    public int MatchPlayed { get; set; }
+
     [JsonPropertyName("winSet")]
     public int SetsWin { get; set; }
 
