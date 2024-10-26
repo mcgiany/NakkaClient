@@ -90,7 +90,7 @@ public class NakkaTournament
     public string[][] RoundRobinTable { get; set; } = null!;
 
     [JsonPropertyName("rr_result")]
-    public List<Dictionary<string, Dictionary<string, GameScore>>> RoundRobinResults { get; set; } = null!;
+    public object RoundRobinResults { get; set; } = null!;
 
     [JsonPropertyName("t_setting")]
     public TournamentSettings TournamentSettings { get; set; } = null!;
@@ -108,5 +108,5 @@ public class NakkaTournament
     public Player[] EntryList { get; set; } = null!;
 
     [JsonPropertyName("rr_rank")]
-    public List<Dictionary<string, int>> RobinRoundRank { get; set; } = null!;
+    public object RobinRoundRank { get; set; } = null!;
 }

@@ -1,5 +1,6 @@
 ﻿using Mcgiany.NakkaClient.Enums;
 using Mcgiany.NakkaClient.Extensions;
+using Mcgiany.NakkaClient.Helpers;
 using Xunit;
 
 namespace Mcgiany.NakkaClient.UnitTests;
@@ -7,6 +8,16 @@ namespace Mcgiany.NakkaClient.UnitTests;
 public class ProviderTests
 {
     private const string NakkaUrl = "https://tk2-228-23746.vs.sakura.ne.jp/n01";
+
+    [Fact]
+    public async Task TestRRRankDeserializationAsync()
+    {
+        using var nakkaProvider = new ApiClient(NakkaUrl);
+        var tournament = await nakkaProvider.GetTournamentAsync("t_ex8Z_5487");
+        var ranks = NakkaTournamentRankHelper.GetRanks(tournament.RobinRoundRank);
+        Assert.True(ranks.Count > 0);
+    }
+
     [Fact]
     public async Task GetLeagueTestAsync()
     {
