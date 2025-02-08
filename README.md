@@ -4,11 +4,15 @@ Nakka client is a simple .NET library that provides communication with [Nakka](h
 
 With this client you can get information about leagues, tournaments and matches from Nakka.
 
-## Usage
+Library also provides some useful features, like build complete RoundRobinGroup with player ranks or calculate player double attempts in match.
+
+## Inject
 
 Add nuget package `Mcgiany.NakkaClient` to your .NET project.
 
+Inject NakkaClient via dependency injection.
 ```cs
-using var client = new ApiClient("https://tk2-228-23746.vs.sakura.ne.jp/n01");
-var league = await client.GetLeagueAsync("league_id");
+services.AddNakkaClient();
 ```
+
+Then use `INakkaClient` interface in your code.
