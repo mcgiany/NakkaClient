@@ -5,7 +5,7 @@ namespace Mcgiany.NakkaClient.Entities;
 /// <summary>
 /// Nakka player.
 /// </summary>
-public class Player
+public class NakkaPlayer
 {
     /// <summary>
     /// PLayer ID.

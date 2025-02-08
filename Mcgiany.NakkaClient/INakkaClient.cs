@@ -38,8 +38,8 @@ public interface INakkaClient
     /// Get list of players in tournament.
     /// </summary>
     /// <param name="tournamentId">Tournament ID.</param>
-    /// <returns><see cref="Player"/></returns>
-    Task<List<Player>?> GetTournamentPlayersAsync(string tournamentId);
+    /// <returns><see cref="NakkaPlayer"/></returns>
+    Task<List<NakkaPlayer>?> GetTournamentPlayersAsync(string tournamentId);
 
     /// <summary>
     /// Get tournament statistics.
@@ -62,6 +62,6 @@ public interface INakkaClient
     /// Get match by ID.
     /// </summary>
     /// <param name="matchId">Match ID.</param>
-    /// <returns><see cref="Match"/></returns>
-    Task<Match?> GetMatchAsync(string matchId);
+    /// <returns><see cref="NakkaMatch"/></returns>
+    Task<NakkaMatch?> GetMatchAsync(string matchId);
 }

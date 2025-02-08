@@ -1,112 +1,84 @@
-﻿using System.Text.Json.Serialization;
 using Mcgiany.NakkaClient.Enums;
+using Mcgiany.NakkaClient.Extensions;
 
 namespace Mcgiany.NakkaClient.Entities;
 
 public class NakkaTournament
 {
-    [JsonPropertyName("tdid")]
-    public string TournamentId { get; set; } = null!;
+    private InternalNakkaTournament _internalTournament;
 
-    [JsonPropertyName("createTime")]
-    public long CreateTime { get; set; }
+    internal NakkaTournament(InternalNakkaTournament internalTournament)
+    {
+        _internalTournament = internalTournament;
+    }
 
-    [JsonPropertyName("updateTime")]
-    public long UpdateTime { get; set; }
+    public string TournamentId => _internalTournament.TournamentId;
 
-    [JsonPropertyName("status")]
-    public NakkaStatus Status { get; set; }
+    public long CreateTime => _internalTournament.CreateTime;
 
-    [JsonPropertyName("ad")]
-    public int Ad { get; set; }
+    public long UpdateTime => _internalTournament.UpdateTime;
 
-    [JsonPropertyName("title")]
-    public string Title { get; set; } = null!;
+    public NakkaStatus Status => _internalTournament.Status;
 
-    [JsonPropertyName("t_date")]
-    public long TournamentDate { get; set; }
+    public int Ad => _internalTournament.Ad;
 
-    [JsonPropertyName("s_date")]
-    public long StartDate { get; set; }
+    public string Title => _internalTournament.Title;
 
-    [JsonPropertyName("details")]
-    public string Details { get; set; } = null!;
+    public long TournamentDate => _internalTournament.TournamentDate;
 
-    [JsonPropertyName("image")]
-    public string Image { get; set; } = null!;
+    public long StartDate => _internalTournament.StartDate;
 
-    [JsonPropertyName("color")]
-    public string Color { get; set; } = null!;
+    public string Details => _internalTournament.Details;
 
-    [JsonPropertyName("chat")]
-    public int Chat { get; set; }
+    public string Image => _internalTournament.Image;
 
-    [JsonPropertyName("show_avg")]
-    public int ShowAvg { get; set; }
+    public string Color => _internalTournament.Color;
 
-    [JsonPropertyName("auto_complete")]
-    public int AutoComplete { get; set; }
+    public int Chat => _internalTournament.Chat;
 
-    [JsonPropertyName("dynamic_avg")]
-    public int DynamicAvg { get; set; }
+    public int ShowAvg => _internalTournament.ShowAvg;
 
-    [JsonPropertyName("game_type")]
-    public int GameType { get; set; }
+    public int AutoComplete => _internalTournament.AutoComplete;
 
-    [JsonPropertyName("individual_pass")]
-    public int IndividualPass { get; set; }
+    public int DynamicAvg => _internalTournament.DynamicAvg;
 
-    [JsonPropertyName("hide_sns")]
-    public int HideSns { get; set; }
+    public int GameType => _internalTournament.GameType;
 
-    [JsonPropertyName("common_join")]
-    public int CommonJoin { get; set; }
+    public int IndividualPass => _internalTournament.IndividualPass;
 
-    [JsonPropertyName("show_entry_no")]
-    public int ShowEntryNumber { get; set; }
+    public int HideSns => _internalTournament.HideSns;
 
-    [JsonPropertyName("team_games")]
-    public int TeamGames { get; set; }
+    public int CommonJoin => _internalTournament.CommonJoin;
 
-    [JsonPropertyName("name_sep")]
-    public string NameSep { get; set; } = null!;
+    public int ShowEntryNumber => _internalTournament.ShowEntryNumber;
 
-    [JsonPropertyName("private")]
-    public int Private { get; set; }
+    public int TeamGames => _internalTournament.TeamGames;
 
-    [JsonPropertyName("lgid")]
-    public string LeagueId { get; set; } = null!;
+    public string NameSep => _internalTournament.NameSep;
 
-    [JsonPropertyName("league")]
-    public int League { get; set; }
+    public int Private => _internalTournament.Private;
 
-    [JsonPropertyName("kind")]
-    public string Kind { get; set; } = null!;
+    public string LeagueId => _internalTournament.LeagueId;
 
-    [JsonPropertyName("rr_setting")]
-    public RoundRobinSettings RoundRobinSettings { get; set; } = null!;
+    public int League => _internalTournament.League;
 
-    [JsonPropertyName("rr_table")]
-    public string[][] RoundRobinTable { get; set; } = null!;
+    public string Kind => _internalTournament.Kind;
 
-    [JsonPropertyName("rr_result")]
-    public object RoundRobinResults { get; set; } = null!;
+    public RoundRobinSettings RoundRobinSettings => _internalTournament.RoundRobinSettings;
 
-    [JsonPropertyName("t_setting")]
-    public TournamentSettings TournamentSettings { get; set; } = null!;
+    public string[][] RoundRobinTable => _internalTournament.RoundRobinTable;
 
-    [JsonPropertyName("t_title")]
-    public string[] TournamentTitle { get; set; } = null!;
+    public List<Dictionary<string, Dictionary<string, GameScore>>> RoundRobinResults => _internalTournament.GetTournamentResults();
 
-    [JsonPropertyName("t_table")]
-    public object[] TournamentTable { get; set; } = null!;
+    public TournamentSettings TournamentSettings => _internalTournament.TournamentSettings;
 
-    [JsonPropertyName("t_result")]
-    public object TournamentResults { get; set; } = null!;
+    public string[] TournamentTitle => _internalTournament.TournamentTitle;
 
-    [JsonPropertyName("entry_list")]
-    public Player[] EntryList { get; set; } = null!;
+    public object[] TournamentTable => _internalTournament.TournamentTable;
 
-    [JsonPropertyName("rr_rank")]
-    public object RobinRoundRank { get; set; } = null!;
+    public object TournamentResults => _internalTournament.TournamentResults;
+
+    public NakkaPlayer[] EntryList => _internalTournament.EntryList;
+
+    public List<Dictionary<string, int>> RobinRoundRank => _internalTournament.GetRanks();
 }

@@ -5,13 +5,13 @@ namespace Mcgiany.NakkaClient.Http;
 /// <summary>
 /// Rest client for HTTP request and deserialize responses.
 /// </summary>
-public class RestClient : IDisposable
+public class RestClient : IRestClient
 {
     private readonly HttpClient _httpClient;
 
-    public RestClient()
+    public RestClient(IHttpClientFactory httpClientFactory)
     {
-        _httpClient = new HttpClient();
+        _httpClient = httpClientFactory.CreateClient("RestClient");
     }
 
     /// <summary>

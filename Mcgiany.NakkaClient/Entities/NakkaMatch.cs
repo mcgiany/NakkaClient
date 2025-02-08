@@ -2,7 +2,7 @@
 
 namespace Mcgiany.NakkaClient.Entities;
 
-public class Match
+public class NakkaMatch
 {
     [JsonPropertyName("tdid")]
     public string TournamentId { get; set; } = null!;
@@ -11,7 +11,7 @@ public class Match
     public string LeagueId { get; set; } = null!;
 
     [JsonPropertyName("tmid")]
-    public string MatchID { get; set; } = null!;
+    public string MatchId { get; set; } = null!;
 
     [JsonPropertyName("ttype")]
     public string Ttype { get; set; } = null!;
