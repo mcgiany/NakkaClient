@@ -68,7 +68,7 @@ public class NakkaTournament
 
     public string[][] RoundRobinTable => _internalTournament.RoundRobinTable;
 
-    public List<Dictionary<string, Dictionary<string, GameScore>>> RoundRobinResults => _internalTournament.GetTournamentResults();
+    public List<Dictionary<string, Dictionary<string, GameScore>>> RoundRobinResults => _internalTournament.GetRoundRobinResults();
 
     public TournamentSettings TournamentSettings => _internalTournament.TournamentSettings;
 
@@ -76,7 +76,7 @@ public class NakkaTournament
 
     public object[] TournamentTable => _internalTournament.TournamentTable;
 
-    public object TournamentResults => _internalTournament.TournamentResults;
+    public List<Dictionary<string, Dictionary<string, GameScore>>> TournamentResults => _internalTournament.GetTournamentResults();
 
     public NakkaPlayer[] EntryList => _internalTournament.EntryList;
 

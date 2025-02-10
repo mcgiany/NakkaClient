@@ -4,8 +4,8 @@
   <TargetFramework>net8.0</TargetFramework>
 	<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 	<PackageId>Mcgiany.NakkaClient</PackageId>
-	<PackageVersion>7.0.0</PackageVersion>
-	<Version>7.0.0</Version>
+	<PackageVersion>7.1.0</PackageVersion>
+	<Version>7.1.0</Version>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   <ImplicitUsings>enable</ImplicitUsings>
   <Nullable>enable</Nullable>

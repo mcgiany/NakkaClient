@@ -64,4 +64,11 @@ public interface INakkaClient
     /// <param name="matchId">Match ID.</param>
     /// <returns><see cref="NakkaMatch"/></returns>
     Task<NakkaMatch?> GetMatchAsync(string matchId);
+
+    /// <summary>
+    /// Get tournament package (Tournament, Player list and Statistics).
+    /// </summary>
+    /// <param name="tournamentId">Tournament ID.</param>
+    /// <returns></returns>
+    Task<TournamentPackage> GetTournamentPackageAsync(string tournamentId);
 }

@@ -6,10 +6,20 @@ public static class NakkaTournamentExtensions
 {
     internal static List<Dictionary<string, Dictionary<string, GameScore>>> GetTournamentResults(this InternalNakkaTournament tournament)
     {
+        return GetResults(tournament.RoundRobinResults);
+    }
+
+    internal static List<Dictionary<string, Dictionary<string, GameScore>>> GetRoundRobinResults(this InternalNakkaTournament tournament)
+    {
+        return GetResults(tournament.RoundRobinResults);
+    }
+
+    private static List<Dictionary<string, Dictionary<string, GameScore>>> GetResults(object results)
+    {
         try
         {
             var result = new List<Dictionary<string, Dictionary<string, GameScore>>>();
-            var deserialized = ((JsonElement)tournament.TournamentResults).Deserialize<Dictionary<string, Dictionary<string, Dictionary<string, GameScore>>>>();
+            var deserialized = ((JsonElement)results).Deserialize<Dictionary<string, Dictionary<string, Dictionary<string, GameScore>>>>();
             foreach (var item in deserialized)
             {
                 result.Add(item.Value);
@@ -18,7 +28,7 @@ public static class NakkaTournamentExtensions
         }
         catch
         { }
-        return ((JsonElement)tournament.TournamentResults).Deserialize<List<Dictionary<string, Dictionary<string, GameScore>>>>();
+        return ((JsonElement)results).Deserialize<List<Dictionary<string, Dictionary<string, GameScore>>>>();
     }
 
     internal static List<Dictionary<string, int>> GetRanks(this InternalNakkaTournament tournament)
