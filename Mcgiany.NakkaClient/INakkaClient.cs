@@ -71,4 +71,11 @@ public interface INakkaClient
     /// <param name="tournamentId">Tournament ID.</param>
     /// <returns></returns>
     Task<TournamentPackage> GetTournamentPackageAsync(string tournamentId);
+
+    /// <summary>
+    /// Get list of currently played matches in tournament.
+    /// </summary>
+    /// <param name="tournamentId">Tournament ID.</param>
+    /// <returns>Dictionary key is raw matchId and value is structured matchId.</returns>
+    Task<Dictionary<string, NakkaMatchId>> GetLiveMatchesAsync(string tournamentId);
 }

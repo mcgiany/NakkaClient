@@ -7,7 +7,6 @@ namespace Mcgiany.NakkaClient.UnitTests;
 
 public class ProviderTests
 {
-    private const string NakkaUrl = "https://tk2-228-23746.vs.sakura.ne.jp/n01";
     private INakkaClient _nakkaClient;
 
     public ProviderTests()

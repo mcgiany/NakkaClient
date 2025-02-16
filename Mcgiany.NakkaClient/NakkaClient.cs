@@ -42,6 +42,10 @@ public class NakkaClient : INakkaClient, IDisposable
     {
         var request = new GetTournamentRequest { TournamentId = tournamentId };
         var tournament = await _restClient.PostAsync<GetTournamentRequest, InternalNakkaTournament>("tournament/n01_tournament.php?cmd=get_data", request);
+        if (tournament is null)
+        {
+            return null;
+        }
         return new NakkaTournament(tournament);
     }
 
@@ -93,5 +97,15 @@ public class NakkaClient : INakkaClient, IDisposable
     public void Dispose()
     {
         _restClient?.Dispose();
+    }
+
+    public async Task<Dictionary<string, NakkaMatchId>> GetLiveMatchesAsync(string tournamentId)
+    {
+        var matches = await _restClient.GetAsync<List<string>>($"tournament/n01_tournament.php?cmd=get_live_list&tdid={tournamentId}");
+        if (matches is null)
+        {
+            return [];
+        }
+        return matches.ToDictionary(k => k, v => new NakkaMatchId(tournamentId, v));
     }
 }
