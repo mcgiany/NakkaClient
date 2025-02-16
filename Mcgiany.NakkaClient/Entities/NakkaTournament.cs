@@ -81,4 +81,6 @@ public class NakkaTournament
     public NakkaPlayer[] EntryList => _internalTournament.EntryList;
 
     public List<Dictionary<string, int>> RobinRoundRank => _internalTournament.GetRanks();
+
+    public Dictionary<string, Badge> Badges => _internalTournament.Badges;
 }
