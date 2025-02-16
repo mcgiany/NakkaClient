@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Mcgiany.NakkaClient.Converters;
 using Mcgiany.NakkaClient.Enums;
 
 namespace Mcgiany.NakkaClient.Entities;
@@ -109,4 +110,8 @@ internal class InternalNakkaTournament
 
     [JsonPropertyName("rr_rank")]
     public object RobinRoundRank { get; set; } = null!;
+
+    [JsonPropertyName("badge")]
+    [JsonConverter(typeof(BadgeJsonConverter))]
+    public Dictionary<string, Badge> Badges { get; set; } = [];
 }
