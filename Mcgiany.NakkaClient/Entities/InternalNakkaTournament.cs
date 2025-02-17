@@ -100,7 +100,7 @@ internal class InternalNakkaTournament
     public string[] TournamentTitle { get; set; } = null!;
 
     [JsonPropertyName("t_table")]
-    public object[] TournamentTable { get; set; } = null!;
+    public string[][] TournamentTable { get; set; } = null!;
 
     [JsonPropertyName("t_result")]
     public object TournamentResults { get; set; } = null!;

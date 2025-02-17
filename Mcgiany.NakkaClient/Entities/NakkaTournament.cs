@@ -74,7 +74,7 @@ public class NakkaTournament
 
     public string[] TournamentTitle => _internalTournament.TournamentTitle;
 
-    public object[] TournamentTable => _internalTournament.TournamentTable;
+    public string[][] TournamentTable => _internalTournament.TournamentTable;
 
     public List<Dictionary<string, Dictionary<string, GameScore>>> TournamentResults => _internalTournament.GetTournamentResults();
 
