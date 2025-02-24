@@ -6,7 +6,7 @@ public static class NakkaTournamentExtensions
 {
     internal static List<Dictionary<string, Dictionary<string, GameScore>>> GetTournamentResults(this InternalNakkaTournament tournament)
     {
-        return GetResults(tournament.RoundRobinResults);
+        return GetResults(tournament.TournamentResults);
     }
 
     internal static List<Dictionary<string, Dictionary<string, GameScore>>> GetRoundRobinResults(this InternalNakkaTournament tournament)
